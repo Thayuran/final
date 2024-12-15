@@ -1,0 +1,20 @@
+.green-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  margin-left: 16px;
+  position: relative;
+}
+
+mat-card-header {
+  display: flex;
+  align-items: center;
+}
+
+.file-input {
+  display: none;
+}
+
+.green-button:hover .file-input {
+  cursor: pointer;
+}

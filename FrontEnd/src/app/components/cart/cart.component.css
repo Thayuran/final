@@ -1,0 +1,12 @@
+.content {
+  margin-top: 58px;
+  background-color: cadetblue;
+}
+
+.checkout {
+  bottom: 0px;
+  background:brown;
+  position: absolute;
+  width: 100%;
+  list-style-type: none;
+}

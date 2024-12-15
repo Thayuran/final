@@ -1,0 +1,24 @@
+<div class="payment-popup">
+  <h2>Cash Payment</h2>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Customer Name</mat-label>
+    <input matInput [(ngModel)]="customerName">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Phone Number</mat-label>
+    <input matInput [(ngModel)]="phoneNumber">
+  </mat-form-field>
+
+  <div class="amount-section">
+    <p>Total Amount: {{ totalAmount | currency }}</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Received Amount</mat-label>
+      <input matInput type="number" [(ngModel)]="receivedAmount" (input)="calculateBalance()">
+    </mat-form-field>
+    <p>Balance: {{ balance | currency }}</p>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="completeTransaction()">Pay</button>
+</div>

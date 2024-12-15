@@ -1,0 +1,91 @@
+
+<div class="catalog-card" style="margin-bottom: 0;">
+  <div>
+      <div class="row">
+          <div class="col-md-3 col-xl-3">
+              <mat-form-field  class="w-100" appearance="outline">
+                  <mat-label>Filter Products</mat-label>
+                  <input matInput autocomplete="off" placeholder="Search For Products"  name="searchString" type="text" (keyup)="doFilter($any($event).target.value)" />
+              </mat-form-field>
+          </div>
+
+          <div class="col-md-3 col-xl-3">
+              <form>
+
+                <!-- <mat-form-field class="w-100 col-sm-4 col-lg-4" appearance="outline">
+                  <mat-label>Brand</mat-label>
+                  <mat-select formControlName="brand">
+                    <mat-option value="">All Brands</mat-option>
+                    <mat-option *ngFor="let brand of brands" [value]="brand.name">
+                      {{ brand.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field> -->
+
+                  <!-- <mat-form-field appearance="outline" *ngIf="brands && brands">
+                      <mat-label>Filter Brands</mat-label>
+                      <input type="text" placeholder="Brand Selection" aria-label="Filter Brands" matInput [matAutocomplete]="auto" [formControl]="brandAutoComplete">
+                      <mat-autocomplete #auto="matAutocomplete" [displayWith]="getBrandName.bind(this)" >
+                          <mat-option *ngFor="let brand of brands.data" [value]="productParams.brandIds">
+                            <mat-checkbox [checked]="isCheckedBrand(brand)" (change)="toggleBrandSelection($event, brand)" (click)="$event.stopPropagation()">
+                              {{brand.name}}
+                            </mat-checkbox>
+                          </mat-option>
+                      </mat-autocomplete>
+                  </mat-form-field> -->
+              </form>
+          </div>
+          <div class="col-md-3 col-xl-3">
+              <form>
+                  <!-- <mat-form-field *ngIf="categories && categories.data" appearance="outline">
+                    <mat-label>Filter Categories</mat-label>
+                    <input type="text" placeholder="Category Selection" aria-label="Filter Category" matInput [matAutocomplete]="auto" [formControl]="categoryAutoComplete">
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getCategoryName.bind(this)" >
+                        <mat-option *ngFor="let category of categories.data" [value]="productParams.categoryIds">
+                          <mat-checkbox [checked]="isCheckedCategory(category)" (change)="toggleCategorySelection($event, category)" (click)="$event.stopPropagation()">
+                            {{category.name}}
+                          </mat-checkbox>
+                        </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field> -->
+                  <!-- <mat-form-field class="w-100 col-sm-6 col-lg-4" appearance="outline">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category">
+                      <mat-option value="">All Categories</mat-option>
+                      <mat-option *ngFor="let category of categories" [value]="category.name">
+                        {{ category.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+              </form>
+          </div>
+
+      </div>
+
+      <div *ngIf="hasProductsLoaded == true && (dataSource && dataSource.data)" class="product-container">
+          <div class="row">
+            <div class="scrollable-container">
+              <div *ngFor="let product of dataSource.data" class="col-xs-12 col-sm-12 col-md-6 col-lg-3" style="border-radius: 5px;">
+                  <mat-card class="example-card">
+                      <img *ngIf="showImage" mat-card-image src="{{product.imageUrl}}">
+                      <mat-card-content style="padding: 0!important;">
+                          <h5>
+                              {{product.name}}
+                          </h5>
+                          {{product.serialNumber}}
+                          <p>{{product.price}}</p>
+                          <p>{{product.quantity}}</p>
+                      </mat-card-content>
+                      <mat-card-actions>
+                          <button [disabled]="(repoService.IsProductBeingAdded | async)" mat-raised-button color="accent"
+                           (click)="addToCart(product)">
+                              <span><span style="margin-right: 10px;" class="fas fa-plus"></span>Add</span>
+                          </button>
+                      </mat-card-actions>
+                  </mat-card>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

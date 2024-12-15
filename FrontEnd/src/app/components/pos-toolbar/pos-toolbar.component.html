@@ -1,0 +1,51 @@
+<!-- shop cart -->
+  <mat-toolbar-row color="primary">
+      <button mat-icon-button routerLink="/menu">
+          <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <span class="nav-spacer"></span>
+      <a style="padding:0px 20px 0px 10px" >
+          <mat-toolbar>
+            <button style="padding:0px 20px 20px 10px"
+            mat-icon-button
+            [matMenuTriggerFor]="profilemenu"
+            aria-label="Notifications"
+          >
+            <img
+              src="../../../../assets/images/logos/user.jpg"
+              class="rounded-circle object-cover"
+              width="35"
+            />
+          </button>
+          <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
+            <mat-list-item>
+              <span matListItemTitle class="f-s-16 f-w-600">{{userName}}</span>
+              <span matListItemLine class="mat-body-1">{{userRole}}</span>
+            </mat-list-item>
+            <button mat-menu-item  (click)="ChangePassword()">
+              <mat-icon class="d-flex align-items-center"
+                ><i-tabler name="user" class="icon-18 d-flex"></i-tabler></mat-icon
+              >
+              Change password
+            </button>
+
+
+            <div class="p-x-12 m-t-12">
+              <a
+              (click)="logout()"
+                mat-stroked-button
+                color="primary"
+                class="w-100">Logout</a>
+            </div>
+          </mat-menu>
+        </mat-toolbar>
+
+      </a>
+      <mat-divider vertical style="height:50%;margin: 10px;"></mat-divider>
+
+      <button mat-icon-button (click)="cart.toggle()">
+          <mat-icon matBadge="{{cartItemCount}}" matBadgeColor="warn">shopping_cart</mat-icon>
+      </button>
+  </mat-toolbar-row>
+<!-- </mat-toolbar> -->
